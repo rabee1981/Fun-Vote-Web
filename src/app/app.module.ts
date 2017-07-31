@@ -1,3 +1,4 @@
+import { ImageProccessService } from './services/imageProccess.service';
 import { UserInfoService } from './services/userInfo.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -47,7 +48,7 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
-  providers: [ChartService,UserInfoService],
+  providers: [ChartService,UserInfoService, ImageProccessService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

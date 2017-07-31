@@ -1,10 +1,26 @@
 .btn {
     margin: 1%
 }
-div.chip {
+ div.chip {
     display: inline-flex;
     vertical-align: middle;
     margin-top : 3%;
-    padding-left: 0%;
+    padding-left: 2%;
+}
+canvas {
+        background-repeat : no-repeat; 
+        background-size : cover;
+    }
+i.chip-icon {
+    padding-top: 4px;
+    padding-left: 1px;
+    color:#488aff
+} 
+.chip-label{
+    padding-top: 1px;
+    padding-left: 2px;
+    font-size: 13px;
+    font-weight: 300;
+    color:#488aff;
 }
 
