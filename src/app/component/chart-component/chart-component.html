@@ -1,0 +1,40 @@
+<div class="card" style="margin:5px auto;width : 95%;padding : 2%;margin-top: 3%;">
+<div style="display: block;">
+    <canvas *ngIf="chartDetails?.chartData!=undefined" baseChart width="600" height="315"
+            [data]="chartDetails?.chartData"
+            [labels]="chartDetails?.chartLabels"
+            [options]="{
+                        legend : {
+                          labels:{boxWidth:10}
+                        },
+                        tooltips: {
+                          enabled : false
+                        },
+                        animation: {
+                              duration: 200
+                          },
+                        title: {
+                          text : chartDetails?.chartTitle,
+                          display: true,
+                          fontSize: 18,
+                          fontFamily: 'Pacifico'
+                        }
+                      }"
+            [colors]="colors"
+            [legend]="!(chartDetails?.chartType=='bar')"
+            [chartType]="chartDetails?.chartType"
+            ></canvas>
+  </div>
+  <div style="text-align: center">
+    <button class="btn" *ngIf="chartDetails?.chartLabels.length>=1"  [disabled]="isvote" [style.background]="chartDetails?.chartColor[0]" (click)="vote(0)">{{chartDetails?.chartLabels[0]}}</button>
+    <button class="btn" *ngIf="chartDetails?.chartLabels.length>=2"  [disabled]="isvote" [style.background]="chartDetails?.chartColor[1]" (click)="vote(1)">{{chartDetails?.chartLabels[1]}}</button>
+    <button class="btn" *ngIf="chartDetails?.chartLabels.length>=3"  [disabled]="isvote" [style.background]="chartDetails?.chartColor[2]" (click)="vote(2)">{{chartDetails?.chartLabels[2]}}</button>
+    <button class="btn" *ngIf="chartDetails?.chartLabels.length>=4"  [disabled]="isvote" [style.background]="chartDetails?.chartColor[3]" (click)="vote(3)">{{chartDetails?.chartLabels[3]}}</button>
+  </div>
+  <div class="chip">
+    <i class="material-icons" style="padding-top: 2px; padding-left: 10px;color:#488aff">people</i>
+    <div style="padding-left:2px;">&nbsp;{{chartDetails?.votesCount}} voters</div>
+  </div>
+</div>
+
+  

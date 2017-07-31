@@ -1,0 +1,10 @@
+.btn {
+    margin: 1%
+}
+div.chip {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-top : 3%;
+    padding-left: 0%;
+}
+
