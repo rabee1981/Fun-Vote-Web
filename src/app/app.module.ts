@@ -15,6 +15,7 @@ import { ChartByIdComponent } from './chart-by-id/chart-by-id.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuBarComponent } from "app/component/menu-bar/menu-bar.component";
 import { ChartService } from "app/services/chart.service";
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -29,6 +30,9 @@ export const firebaseConfig = {
 
 const appRoutes: Routes = [
   { path: 'chart/:id',      component: ChartByIdComponent },
+  { path: 'home', component: HomeComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '**', redirectTo:''}
 ];
 
 @NgModule({
@@ -37,6 +41,7 @@ const appRoutes: Routes = [
     ChartComponent,
     ChartByIdComponent,
     MenuBarComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
