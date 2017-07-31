@@ -1,3 +1,19 @@
+<div id="modal2" class="modal">
+    <div class="modal-content center">
+        <h5>Thank you for your participation</h5>
+        <p style="font-size: 16px">
+            To create your own awesome chart, sharing with friends and more features, please download our mobile app 
+        </p>
+        <a href="https://www.w3schools.com">
+        <img src="../assets/images/app-store.svg">
+        </a>
+        <p>
+        <a href="https://www.ynet.co.il">
+        <img src="../assets/images/google-play-badge.png" height="60">
+        </a>
+        </p>       
+    </div>
+  </div>
 <div *ngIf="isAuth">
-<chart-component *ngIf="chartDetails!=null" [chartDetails]="chartDetails"></chart-component>
+<chart-component (onVoted)="onVoted($event)" *ngIf="chartDetails!=null" [chartDetails]="chartDetails"></chart-component>
 </div>

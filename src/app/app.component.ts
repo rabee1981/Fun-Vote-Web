@@ -48,7 +48,7 @@ export class AppComponent implements OnInit{
      .catch(err => console.log(err))
    }
    showModel(){
-     jQuery('.modal').modal({
+     jQuery('.modal1').modal({
       dismissible: false, // Modal can be dismissed by clicking outside of the modal
       opacity: .5, // Opacity of modal background
       inDuration: 300, // Transition in duration

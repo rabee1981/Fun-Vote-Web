@@ -17,6 +17,7 @@ export class ChartComponent implements OnInit, OnDestroy{
   isvoteSubscribtion: Subscription;
   @Input() chartDetails;
   @Input() owner;
+  @Output() onVoted = new EventEmitter<boolean>()
   colors : Color[];
   chartData:number[]=[];
   isvote=true;
@@ -122,6 +123,7 @@ export class ChartComponent implements OnInit, OnDestroy{
                   ]
   }
   public vote(index){
+    this.onVoted.emit(true);
     this.chartService.isVote(this.chartDetails.$key,this.chartDetails.owner)
     .take(1).subscribe(res => {
      if(!res.$value){

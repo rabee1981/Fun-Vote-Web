@@ -4,6 +4,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { AngularFireDatabase } from "angularfire2/database";
 import { AngularFireAuth } from "angularfire2/auth";
 
+declare var jQuery : any;
+
 @Component({
   selector: 'app-chart-by-id',
   templateUrl: './chart-by-id.component.html',
@@ -13,6 +15,7 @@ export class ChartByIdComponent implements OnInit,OnDestroy {
   chartSubscription: Subscription;
   isAuth = true;
   chartId;
+  isPopModel=false;
   chartDetails=null;
   routeSubscription : Subscription;
   constructor(private route: ActivatedRoute,
@@ -44,6 +47,26 @@ export class ChartByIdComponent implements OnInit,OnDestroy {
       }
     )
   }
+  onVoted(event){
+    if(event){
+      this.showModel();
+    }
+  }
+  showModel(){
+     jQuery('.modal').modal({
+      dismissible: false, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+      },
+      complete: function() {} // Callback for Modal close
+    }
+  );
+  jQuery('#modal2').modal('open');
+}
     ngOnDestroy(): void {
     this.routeSubscription.unsubscribe();
     this.chartSubscription.unsubscribe();
