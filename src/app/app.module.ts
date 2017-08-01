@@ -1,3 +1,4 @@
+import { ThousandPipe } from './pipes/thousand.pipe';
 import { ImageProccessService } from './services/imageProccess.service';
 import { UserInfoService } from './services/userInfo.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
     ChartByIdComponent,
     MenuBarComponent,
     HomeComponent,
+    ThousandPipe,
   ],
   imports: [
     BrowserModule,
