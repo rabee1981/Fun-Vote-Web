@@ -36,7 +36,7 @@ export class ChartComponent implements OnInit, OnDestroy{
       this.imageSub = this.chartService.getImageUrl(this.chartDetails.owner,this.chartDetails.$key).subscribe(
       res => {
         if(res.$value){
-          this.imgService.convertToDataURLviaCanvas(res.$value, "image/jpeg")
+          this.imgService.convertToDataURLviaCanvas(res.$value, "image/jpeg",1)
               .then( base64Img => {
                 this.backgroundImage = base64Img
               }).catch()

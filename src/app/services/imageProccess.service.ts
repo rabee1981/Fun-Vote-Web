@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 @Injectable()
 export class ImageProccessService {
-    convertToDataURLviaCanvas(url, outputFormat){
+    convertToDataURLviaCanvas(url, outputFormat,opacity){
 	return new Promise( (resolve, reject) => {
 		let img = new Image();
 		img.crossOrigin = 'Anonymous';
@@ -14,7 +14,7 @@ export class ImageProccessService {
             ctx.rect(0, 0, 315, 166);
             ctx.fillStyle = "#E9EBEE";
             ctx.fill()
-            ctx.globalAlpha = 0.6;
+            ctx.globalAlpha = opacity;
             ctx.drawImage(img,0, 0, img.width, img.height, 0, 0, 315, 166);
 			dataURL = canvas.toDataURL(outputFormat);
 			canvas = null;
