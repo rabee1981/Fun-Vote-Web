@@ -12,6 +12,7 @@ declare var jQuery : any;
   styleUrls: ['./chart-by-id.component.css']
 })
 export class ChartByIdComponent implements OnInit,OnDestroy {
+  loading: boolean;
   chartSubscription: Subscription;
   isAuth = true;
   chartId;
@@ -23,6 +24,7 @@ export class ChartByIdComponent implements OnInit,OnDestroy {
               private afAuth : AngularFireAuth) { }
 
   ngOnInit() {
+    this.loading = true;
     this.afAuth.authState.subscribe(
       user => {
         this.isAuth=true
@@ -40,8 +42,11 @@ export class ChartByIdComponent implements OnInit,OnDestroy {
         ).subscribe(
           chart => {
             this.chartDetails = chart;
+            this.loading = false;
           },
-          err => {}
+          err => {
+            this.loading = false;
+          }
         )
         });
       }
