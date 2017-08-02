@@ -16,7 +16,7 @@
     </div>
   </div>
 <div *ngIf="isAuth" style="background : #ffffff">
-<div *ngIf="loading == true" class="loader center"></div>
+<div *ngIf="loading == true" class="loader center-loader"></div>
 <div *ngIf="loading == false">
     <chart-component (onVoted)="onVoted($event)" *ngIf="chartDetails!=null" [chartDetails]="chartDetails"></chart-component>
 </div>
