@@ -15,7 +15,6 @@ declare var jQuery : any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  @ViewChild('nav') nav : ElementRef;
   isAuth=true;
   closeResult: string;
   constructor(private af : AngularFireDatabase, private afAuth : AngularFireAuth, private chartService : ChartService,

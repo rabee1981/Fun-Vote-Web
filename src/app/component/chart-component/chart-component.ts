@@ -34,7 +34,8 @@ export class ChartComponent implements OnInit, OnDestroy{
       this.isvoteSubscribtion = this.chartService.isVote(this.chartDetails.$key,this.chartDetails.owner)
       .subscribe(res => {
         this.isvote = res.$value
-      })
+      },
+      err=>{})
       this.imageSub = this.chartService.getImageUrl(this.chartDetails.owner,this.chartDetails.$key).subscribe(
       res => {
         if(res.$value){
@@ -45,12 +46,14 @@ export class ChartComponent implements OnInit, OnDestroy{
         }else{
               this.backgroundImage = "data:image/gif;base64,R0lGODlhAQABAIAAAP7//wAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==";
         }
-      }
+      },
+      err=>{}
     )
     this.votesCountSub = this.chartService.getVoteCount(this.chartDetails.$key,this.chartDetails.owner).subscribe(
       count => {
         this.votesCount = count.$value
-      }
+      },
+      err=>{}
     )
     this.chartDetails.titleColor = '#000000'
     if(this.chartDetails.chartType==='bar'){
