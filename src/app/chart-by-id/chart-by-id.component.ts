@@ -42,9 +42,21 @@ export class ChartByIdComponent implements OnInit,OnDestroy {
                   this.chartDetails = publicChart;
                   this.loading = false;
                 }else{
-                  console.log(publicChart.$value)
-                  alert('you can not see this chart, this chart is not public')
-                  this.loading = false;
+                  this.af.object(`users/${user.uid}/userCharts/${res.id}`).subscribe(
+                    userChart => {
+                      if(userChart !== undefined){
+                        this.chartDetails = userChart;
+                        this.loading = false;
+                      }else{
+                          alert('you can not see this chart, this chart is not public')
+                          this.loading = false;
+                      }
+                    },
+                    err => {
+                      alert('you can not see this chart, this chart is not public')
+                      this.loading = false;
+                    }
+                  )
                 }
               })
             }
