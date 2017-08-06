@@ -27,28 +27,34 @@ export class ChartByIdComponent implements OnInit,OnDestroy {
     this.loading = true;
     this.afAuth.authState.subscribe(
       user => {
-        this.isAuth=true
+        if(user){
+          this.isAuth=true
         this.routeSubscription = this.route.params.subscribe(res => {
-        this.chartSubscription = this.af.object(`allCharts/${res.id}`)
-        .map(
+        this.chartSubscription = this.af.object(`users/${user.uid}/friendsCharts/${res.id}`)
+        .subscribe(
           chart => {
-            chart.votesCount = chart.chartData.reduce(
-              (a,b) => {
-                return a+b
-              }
-            )
-            return chart
-          }
-        ).subscribe(
-          chart => {
-            this.chartDetails = chart;
-            this.loading = false;
+            if(chart.$value === undefined){
+                this.chartDetails = chart;
+                this.loading = false;
+            }else{
+              this.af.object(`publicCharts/${res.id}`).subscribe(publicChart => {
+                if(publicChart.$value === undefined){
+                  this.chartDetails = publicChart;
+                  this.loading = false;
+                }else{
+                  console.log(publicChart.$value)
+                  alert('you can not see this chart, this chart is not public')
+                  this.loading = false;
+                }
+              })
+            }
           },
           err => {
             this.loading = false;
           }
         )
         });
+        } 
       }
     )
   }
@@ -59,7 +65,7 @@ export class ChartByIdComponent implements OnInit,OnDestroy {
   }
   showModel(){
      jQuery('.modal').modal({
-      dismissible: false, // Modal can be dismissed by clicking outside of the modal
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
       opacity: .5, // Opacity of modal background
       inDuration: 300, // Transition in duration
       outDuration: 200, // Transition out duration

@@ -41,7 +41,7 @@ export class AppComponent implements OnInit{
      this.afAuth.auth.signOut();
    }
    login(){
-     this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+     this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider().addScope('user_friends'))
      .then(res => {
        this.afDatabase.object(`users/${res.user.uid}/userInfo`).update({accessToken : res.credential.accessToken});
      })

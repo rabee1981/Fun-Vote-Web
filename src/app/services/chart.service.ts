@@ -19,24 +19,18 @@ export class ChartService {
         ) 
     }
 
-    voteFor(key,index,owner){ // voters is updated just in the user charts its not updates in the allCharts and friends charts
-        this.afDatabase.list(`allCharts/${key}`).take(1).subscribe(res => {
-            if(res.length<=0){
-                alert('this chart no longer exist...')
-            }else{
+    voteFor(key,index,owner){ // voters is updated just in the user charts its not updates in the public and friends charts
                 let headers = new Headers();
                 this.afAuth.auth.currentUser.getIdToken().then(
                     token => {
                     headers.append('Authorization', 'Bearer '+token)
                     this.http.get(`https://us-central1-funvaotedata.cloudfunctions.net/voteFor?owner=${owner}&key=${key}&index=${index}`,{headers : headers})
                     .take(1).subscribe(res => {
-                     //   console.log(res);
+                        console.log(res);
                     })
                  })
-            }
-        })
     }
-    isVote(key,owner){ // voters is updated just in the user charts its not updates in the allCharts and friends charts
+    isVote(key,owner){ // voters is updated just in the user charts its not updates in the public and friends charts
         return this.afDatabase.object(`users/${owner}/userCharts/${key}/voters/${this.useruid}`);
     }
     getImageUrl(owner,key){

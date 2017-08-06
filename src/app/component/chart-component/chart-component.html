@@ -1,26 +1,26 @@
 <div class="card" style="margin:5px auto;width : 95%;padding : 2%;margin-top: 3%;">
 <div style="display: block;">
-    <canvas [id]="chartDetails.$key" baseChart width="600" height="315"
+    <canvas [id]="chartDetails?.$key" baseChart width="600" height="315"
             [ngStyle]="{'background-image': 'url(' + backgroundImage + ')'}"
-            [legend]="!(this.chartDetails?.chartType==='bar' || this.chartDetails.chartType==='horizontalBar')"
+            [legend]="!(this.chartDetails?.chartType==='bar' || this.chartDetails?.chartType==='horizontalBar')"
             [options]="options"
-            [chartType]="chartDetails.chartType"
-            [data]="chartDetails.chartData"
+            [chartType]="chartDetails?.chartType"
+            [data]="chartDetails?.chartData"
             [labels]="this.newLabels"
             [colors]="colors"
             ></canvas>
   </div>
   <div *ngIf="(this.chartDetails?.chartType==='bar')" style="text-align: center;padding-top : 20px;">
-    <button class="btn" [disabled]="isvote" [style.background]="this.chartDetails.chartColor[0]" (click)="vote(0)">{{chartDetails.chartLabels[0]}}</button>
-    <button class="btn" [disabled]="isvote" [style.background]="this.chartDetails.chartColor[1]" (click)="vote(1)">{{chartDetails.chartLabels[1]}}</button>
-    <button class="btn" *ngIf="chartDetails.chartLabels.length>=3"  [disabled]="isvote" [style.background]="this.chartDetails.chartColor[2]" (click)="vote(2)">{{chartDetails.chartLabels[2]}}</button>
-    <button class="btn" *ngIf="chartDetails.chartLabels.length>=4"  [disabled]="isvote" [style.background]="this.chartDetails.chartColor[3]" (click)="vote(3)">{{chartDetails.chartLabels[3]}}</button>
+    <button class="btn" [disabled]="isvote" [style.background]="this.chartDetails?.chartColor[0]" (click)="vote(0)">{{chartDetails?.chartLabels[0]}}</button>
+    <button class="btn" [disabled]="isvote" [style.background]="this.chartDetails?.chartColor[1]" (click)="vote(1)">{{chartDetails?.chartLabels[1]}}</button>
+    <button class="btn" *ngIf="chartDetails?.chartLabels.length>=3"  [disabled]="isvote" [style.background]="this.chartDetails?.chartColor[2]" (click)="vote(2)">{{chartDetails?.chartLabels[2]}}</button>
+    <button class="btn" *ngIf="chartDetails?.chartLabels.length>=4"  [disabled]="isvote" [style.background]="this.chartDetails?.chartColor[3]" (click)="vote(3)">{{chartDetails?.chartLabels[3]}}</button>
   </div>
     <div *ngIf="!(this.chartDetails?.chartType==='bar')" style="text-align: center;padding-top : 20px;">
-    <button class="btn" *ngIf="chartDetails.chartLabels.length>=4"  [disabled]="isvote" [style.background]="this.chartDetails.chartColor[3]" (click)="vote(3)">{{chartDetails.chartLabels[3]}}</button>
-    <button class="btn" *ngIf="chartDetails.chartLabels.length>=3"  [disabled]="isvote" [style.background]="this.chartDetails.chartColor[2]" (click)="vote(2)">{{chartDetails.chartLabels[2]}}</button>
-    <button class="btn" [disabled]="isvote" [style.background]="this.chartDetails.chartColor[1]" (click)="vote(1)">{{chartDetails.chartLabels[1]}}</button>
-    <button class="btn" [disabled]="isvote" [style.background]="this.chartDetails.chartColor[0]" (click)="vote(0)">{{chartDetails.chartLabels[0]}}</button>
+    <button class="btn" *ngIf="chartDetails?.chartLabels.length>=4"  [disabled]="isvote" [style.background]="this.chartDetails?.chartColor[3]" (click)="vote(3)">{{chartDetails?.chartLabels[3]}}</button>
+    <button class="btn" *ngIf="chartDetails?.chartLabels.length>=3"  [disabled]="isvote" [style.background]="this.chartDetails?.chartColor[2]" (click)="vote(2)">{{chartDetails?.chartLabels[2]}}</button>
+    <button class="btn" [disabled]="isvote" [style.background]="this.chartDetails?.chartColor[1]" (click)="vote(1)">{{chartDetails?.chartLabels[1]}}</button>
+    <button class="btn" [disabled]="isvote" [style.background]="this.chartDetails?.chartColor[0]" (click)="vote(0)">{{chartDetails?.chartLabels[0]}}</button>
   </div>
   <div class="chip">
     <i class="material-icons chip-icon">people</i>
