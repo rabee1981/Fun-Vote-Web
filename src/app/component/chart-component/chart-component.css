@@ -1,5 +1,9 @@
 .btn {
-    margin: 1%
+    margin: 1%;
+    zoom: 0.8;
+    padding-left : 8px;
+    padding-right: 8px;
+    padding-top: 2px;
 }
  div.chip {
     display: inline-flex;
