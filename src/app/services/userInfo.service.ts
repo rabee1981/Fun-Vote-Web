@@ -15,18 +15,14 @@ export class UserInfoService {
                 .take(1).subscribe(
                     (res : any) => {
                         let freidsArray = JSON.parse(res._body).data;
-                        let userFriendsList : UserInfo[]=[];
-                        for(let key in freidsArray){
-                        var userInfo : UserInfo =  {
+                        for (let key in freidsArray) {
+                          var userInfo: UserInfo ={
                             name : freidsArray[key].name,
                             pictureUrl : freidsArray[key].picture.data.url,
                             facebookUid : freidsArray[key].id,
+                          }
+                            this.afDatabase.object(`users/${user.uid}/friendsList/${userInfo.facebookUid}`).update(userInfo)
                         }
-                        userFriendsList.push(userInfo)
-                    }
-                    for(let k in userFriendsList){
-                        this.afDatabase.object(`users/${user.uid}/friendsList/${k}`).update(userFriendsList[k])
-                    }
                     }
                 )
             }
