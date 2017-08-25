@@ -44,7 +44,7 @@ export class ChartByIdComponent implements OnInit,OnDestroy {
                 }else{
                   this.af.object(`users/${user.uid}/userCharts/${res.id}`).subscribe(
                     userChart => {
-                      if(userChart === undefined){
+                      if(userChart.$value === undefined){
                         this.chartDetails = userChart;
                         this.loading = false;
                       }else{
